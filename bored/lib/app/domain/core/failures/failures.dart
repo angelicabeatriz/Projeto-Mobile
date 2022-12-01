@@ -1,0 +1,4 @@
+enum Failures {
+  serverFailures,
+  notFound
+}
