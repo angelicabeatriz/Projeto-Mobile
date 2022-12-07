@@ -22,12 +22,14 @@ class ActivityRepositoryImpl extends ActivityRepository {
       return right(activity);
     } on DioError catch (e) {
       if (e.response!.statusCode == 404) return left(Failures.notFound);
+     
     } catch (exception, stackTrace) {
       await Sentry.captureException(
         exception,
         stackTrace: stackTrace,
+
       );
     }
-    return left(Failures.serverFailures);
+     return left(Failures.serverFailures);
   }
 }
